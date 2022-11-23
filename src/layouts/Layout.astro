@@ -1,0 +1,77 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+
+	:root {
+		--primary-0: #13bfae;
+		--primary-1: #16d7c3;
+		--primary-2: #1de9d5;
+		--primary-3: #34ebd9;
+		--primary-4: #4beedd;
+		--secondary-0: #ff8787;
+		--secondary-1: #ffa1a1;
+		--secondary-2: #ffbaba;
+		--secondary-3: #ffd4d4;
+		--secondary-4: #ffeded;
+		--foreground-0: #2d1e1e;
+		--foreground-1: #3d2929;
+		--foreground-2: #4c3333;
+		--foreground-3: #5b3d3d;
+		--foreground-4: #6b4747;
+		--background-0: #ff9678;
+		--background-1: #ffaa92;
+		--background-2: #ffbeac;
+		--background-3: #ffd2c5;
+		--background-4: #ffe6de;
+		--info: #5affff;
+		--success: #c3ff5a;
+		--danger: #e18778;
+		--warning: #ffd25a;
+
+		--large-width: 1280px;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		font-family: 'Kanit', sans-serif;
+		background-color: var(--background-0);
+		color: var(--foreground-0);
+	}
+	html,
+	body {
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+	}
+	body {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 1280px;
+		padding: 0 1em;
+	}
+</style>

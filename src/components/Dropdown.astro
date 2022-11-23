@@ -1,0 +1,68 @@
+---
+import type { MenuItem } from "./Navbar.astro";
+
+const { to, title, children } = Astro.props as MenuItem;
+---
+
+<li>
+    <a href={to}>{title}</a>
+    <span class="dropdown-toggle">&#9660;</span>
+    <div class="children">
+        {children!.map(({ to, title }) => <a href={to}>{title}</a>)}
+    </div>
+</li>
+
+<style scoped>
+    li {
+        position: relative;
+        color: var(--foreground-0);
+
+        display: flex;
+        align-items: center;
+    }
+    
+    a {
+        text-decoration: none;
+        padding: 0.75em .25em .75em 0.75em ;
+        color: inherit;
+    }
+
+    .dropdown-toggle {
+        font-size: small;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .dropdown-toggle.toggled {
+        rotate: 180deg;
+    }
+
+    .dropdown-toggle.toggled ~ .children{
+        display: block;
+    }
+
+    .children {
+        display: none;
+        bottom: -1em;
+        position: absolute;
+        background-color: var(--background-0);
+
+    }
+</style>
+
+<script>
+    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+    dropdownToggles.forEach((element) => {
+        element.addEventListener("click", ({ target }) => {
+            if(!(target instanceof HTMLElement)) return;
+
+            if (target.classList.contains("toggled")) {
+                target.classList.remove("toggled")
+            } else {
+                target.classList.add("toggled")
+            }
+
+        });
+    });
+</script>
