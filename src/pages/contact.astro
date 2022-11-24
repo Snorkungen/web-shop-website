@@ -1,0 +1,105 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const email = "contact@moyer-gar.com";
+---
+
+<Layout title="Contact">
+    <main>
+        <div class="section">
+            <h1>Contact Information</h1>
+            <h4>
+                Email:
+                <span><a href={`mailto:${email}`}>{email}</a></span>
+            </h4>
+            <h4>Phone: <span>202-555-0176</span></h4>
+            <h4>Address: <span>525 Turner Union Alejandraborough</span></h4>
+        </div>
+        <div class="section">
+            <form>
+                <label for="email">Your Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="name@email.com"
+                    required
+                />
+                <label for="subject">Subject</label>
+                <input
+                    type="text"
+                    id="subject"
+                    name="email"
+                    placeholder="Hello there, how are you?"
+                    required
+                />
+                <label for="message">Message</label>
+                <textarea
+                    name="message"
+                    id="message"
+                    rows="8"
+                    placeholder="Message goes here."></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </main>
+</Layout>
+
+<style scoped lang="scss">
+    $large-width: 1024px;
+
+    main {
+        padding-top: 4em;
+
+        height: 100%;
+        display: grid;
+        // place-items: center;
+
+        align-items: center;
+        justify-items: center;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        @media screen and (max-width: $large-width) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .section {
+        width: 80%;
+    }
+
+    input,
+    textarea {
+        display: block;
+        width: 100%;
+        margin: 0.2em 0.1em 1em;
+        border: 3px solid var(--foreground-1);
+        border-radius: 3px;
+        padding: 0.6em;
+
+        font-weight: 600;
+        color: var(--foreground-0);
+        background-color: var(--background-2);
+    }
+
+    button[type=submit] {
+        display: block;
+        margin: auto 0 auto auto;
+
+        border: 3px solid var(--foreground-1);
+        border-radius: 3px;
+        padding: 0.6em;
+
+        font-weight: 600;
+        color: var(--foreground-0);
+        background-color: var(--background-2);
+        cursor: pointer;
+
+        transition: background 400ms ease-in-out;
+
+        &:hover {
+            background-color: var(--background-3);
+        }
+    }
+</style>

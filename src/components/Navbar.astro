@@ -93,18 +93,20 @@ const menuItems: MenuItem[] = [
     $large-width: 1020px;
 
     header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
         margin: 1em 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
-
+        color: var(--primary-0);
+        padding: 0 .5em;
         @media screen and (max-width: $large-width) {
             flex-direction: column;
         }
 
-        color: var(--primary-0);
-
-        position: relative;
     }
 
     .brand-container {
@@ -168,6 +170,7 @@ const menuItems: MenuItem[] = [
         &.small {
             margin: 1em;
             width: 100%;
+            background-color: var(--background-0);
             ul {
                 flex-direction: column;
             }
