@@ -46,7 +46,15 @@ const menuItems: MenuItem[] = [
             {
                 menuItems.map(({ to, title, children }) =>
                     !!children ? (
-                        <Dropdown to={to} title={title} children={children} />
+                        <li>
+                            <a href={to}>{title}</a>
+                            <span class="dropdown-toggle">&#9660;</span>
+                            <div class="children">
+                                {children!.map(({ to, title }) => (
+                                    <a href={to}>{title}</a>
+                                ))}
+                            </div>
+                        </li>
                     ) : (
                         <li>
                             <a href={to}>{title}</a>
@@ -61,7 +69,15 @@ const menuItems: MenuItem[] = [
             {
                 menuItems.map(({ to, title, children }) =>
                     !!children ? (
-                        <Dropdown to={to} title={title} children={children} />
+                        <li>
+                            <a href={to}>{title}</a>
+                            <span class="dropdown-toggle">&#9660;</span>
+                            <div class="children">
+                                {children!.map(({ to, title }) => (
+                                    <a href={to}>{title}</a>
+                                ))}
+                            </div>
+                        </li>
                     ) : (
                         <li>
                             <a href={to}>{title}</a>
@@ -164,6 +180,37 @@ const menuItems: MenuItem[] = [
             }
         }
     }
+
+    /* Below is dropdown */
+
+    li {
+        position: relative;
+        color: var(--foreground-0);
+
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown-toggle {
+        font-size: small;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .dropdown-toggle.toggled {
+        rotate: 180deg;
+    }
+
+    .dropdown-toggle.toggled ~ .children {
+        display: block;
+    }
+
+    .children {
+        display: none;
+        bottom: -1em;
+        position: absolute;
+        background-color: var(--background-0);
+    }
 </style>
 
 <script>
@@ -176,5 +223,21 @@ const menuItems: MenuItem[] = [
         } else {
             smallMenu.classList.add("hidden");
         }
+    });
+
+    // Below dropdown toggles
+
+    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+    dropdownToggles.forEach((element) => {
+        element.addEventListener("click", ({ target }) => {
+            if (!(target instanceof HTMLElement)) return;
+
+            if (target.classList.contains("toggled")) {
+                target.classList.remove("toggled");
+            } else {
+                target.classList.add("toggled");
+            }
+        });
     });
 </script>
