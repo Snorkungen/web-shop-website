@@ -13,7 +13,7 @@ export interface Product {
     description: string;
 
     price: number;
-    sale: number; // percent 0 - 100
+    sale?: number; // percent 0 - 100
 
     images: {
         src: string;
