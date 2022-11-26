@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { products } from "./products";
+---
+
+<Layout title="Store">
+    <main>
+        <div class="product-container">
+            {
+                products.map(({ name, images }) => (
+                    <div class="product">
+                        <p>{name}</p>
+
+                        <img width="100" src={images[0]} alt={name} />
+                    </div>
+                ))
+            }
+        </div>
+    </main>
+</Layout>
+
+<style lang="scss" scoped>
+    main {
+        height: 100%;
+        padding-top: 4em;
+
+        height: 100%;
+        display: grid;
+        // place-items: center;
+    }
+    .product-container {
+        display: flex;
+    }
+</style>
