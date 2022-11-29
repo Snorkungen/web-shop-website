@@ -11,7 +11,8 @@ import { products } from "./products";
                     <div class="product">
                         <p>{name}</p>
 
-                        <img width="100" src={images[0]} alt={name} />
+                        <img width="150" src={images[0]} alt={name} />
+                        <button>Add to cart</button>
                     </div>
                 ))
             }
@@ -30,5 +31,41 @@ import { products } from "./products";
     }
     .product-container {
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .product {
+            button {
+                display: block;
+                margin: 0 0 0 auto;
+
+                border: none;
+                border-radius: 8px;
+
+                font-weight: 600;
+
+                padding: 0.6em;
+
+                background-color: var(--foreground-0);
+                color: var(--primary-0);
+
+                transition: all 240ms linear;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: var(--foreground-2);
+                }
+            }
+        }
     }
 </style>
+
+<script>
+    import { cart } from "../js/cart";
+    import type { Product } from "./products";
+
+    function addToCart(id: Product["id"]) {
+        cart.addProduct(id);
+    }
+</script>
