@@ -6,6 +6,7 @@ specifiers:
   micro-observables: ^1.7.2
   sass: ^1.56.1
   solid-js: ^1.4.3
+  solid-toast: ^0.3.5
 
 dependencies:
   '@astrojs/solid-js': 1.2.3_solid-js@1.6.2
@@ -13,6 +14,7 @@ dependencies:
   micro-observables: 1.7.2
   sass: 1.56.1
   solid-js: 1.6.2
+  solid-toast: 0.3.5_solid-js@1.6.2
 
 packages:
 
@@ -3207,6 +3209,14 @@ packages:
     resolution: {integrity: sha512-AZBsj+Yn1xliniTTeuQKG9V7VQVkQ8lZmSKvBjpcVSoZeF7nvt/N5f7Kcsx6QSufioa2YgvBjkIiA0cM0qhotw==}
     dependencies:
       csstype: 3.1.1
+    dev: false
+
+  /solid-toast/0.3.5_solid-js@1.6.2:
+    resolution: {integrity: sha512-m4PX2ESex9nSwt9d9XTr3r+Kp3vjSoViDWj3gj6Xxgz21IKYODMKhACXurlZCztz56NQBnfX2m4es4I8JgXGQQ==}
+    peerDependencies:
+      solid-js: ^1.5.4
+    dependencies:
+      solid-js: 1.6.2
     dev: false
 
   /source-map-js/1.0.2:

@@ -1,18 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { products } from "./products";
+import Layout from "../../layouts/Layout.astro";
+import { products } from "../products";
 ---
 
 <Layout title="Store">
     <main>
         <div class="product-container">
             {
-                products.map(({ name, images }) => (
+                products.map(({ name, images, id }) => (
                     <div class="product">
                         <p>{name}</p>
 
                         <img width="150" src={images[0]} alt={name} />
-                        <button>Add to cart</button>
+                        <button data-pid={id}>Add to cart</button>
                     </div>
                 ))
             }
@@ -62,10 +62,14 @@ import { products } from "./products";
 </style>
 
 <script>
-    import { cart } from "../js/cart";
-    import type { Product } from "./products";
+    import { cart } from "../../js/cart";
+    import type { Product } from "../products";
 
-    function addToCart(id: Product["id"]) {
-        cart.addProduct(id);
-    }
+    const buttons = document.querySelectorAll("button[data-pid]") as NodeListOf<HTMLButtonElement>;
+    buttons.forEach((button) => {
+        button.addEventListener("click" , () => {
+            cart.addProduct(Number(button.dataset.pid))
+        })
+    })
+
 </script>
